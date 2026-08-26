@@ -1,5 +1,5 @@
 {
-  "source_file": "C:\\Users\\antiz\\OneDrive\\Desktop\\Codex\\量化研究\\qqq_real_chain_backtest\\data\\QQQ_options.parquet",
+  "source_file": "data/QQQ_options.parquet",
   "file_size_bytes": 387476183,
   "row_count": 15345882,
   "row_group_count": 31,
