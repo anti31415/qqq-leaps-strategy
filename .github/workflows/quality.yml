@@ -1,0 +1,26 @@
+name: Quality checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check JavaScript syntax
+        shell: bash
+        run: find . -name '*.js' -not -path './.git/*' -print0 | xargs -0 -n1 node --check
+      - name: Compile Python sources
+        run: python -m compileall -q .
+      - name: Reject CJK text in public files
+        shell: bash
+        run: '! grep -R -n -P "[\\x{4E00}-\\x{9FFF}]" --exclude-dir=.git --exclude="*.csv" --exclude="*.json" .'
+
