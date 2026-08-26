@@ -1,0 +1,43 @@
+recordType,section,metric,value,label,startDate,endDate,tradingDays,totalReturn,cagr,annualizedVolatility,sharpe,maxDrawdown,entryDate,exitDate,regime,quantity,vixStdBand,sigma2SignalTag,sigma2Count60,sigma2Count20,entryUnderlying,exitUnderlying,strike,entryCost,leapsExitValue,shortCallPremiumCollected,shortCallSettlements,shortCallCloseCost,shortCallNetCash,totalExitValue,pnl,pnlPct,ageDays,entryRsi,entryVix,entryVixMean,entryVixStd,vixThreshold,buyReason,sellReason,rawReason
+summary,strategy_summary,symbol,QQQ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,backtestStart,2021-08-13,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,backtestEnd,2026-08-12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,model,Approximate Black-Scholes LEAPS + monthly short OTM call overlay using Yahoo adjusted close and trailing realized volatility,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,entries,8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,contractsEntered,8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,closedTrades,6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,openPositions,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,wins,6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,losses,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,winRate,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,initialCapital,20000,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,skippedSignalsInsufficientCash,24,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,endingEquity,69323.48954762,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,totalPnl,49323.48954762,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,multipleOnInitialCapital,3.46617448,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,cagr,0.28246061,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,maxDrawdown,-0.55180443,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,availableCash,25085.41559126,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,endingOpenLeapsValue,45939.91310799,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_summary,endingShortCallLiability,1701.83915163,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,signal,RSI(14) < 35 with tiered VIX entry filters,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,option,"~730 days to expiry, target delta 0.7",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,sigma1,"mean+1std <= VIX < mean+2std -> buy 1 contract max once per week, exits <12m +120%, 12-15m +60%, 16-18m +30%",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,sigma2First,"first RSI<35 and VIX >= mean+2std signal in the last 60 trading days -> buy 1 contract, exits <12m +150%, 12-15m +80%, 16-18m +30%",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,sigma2Repeat,"second or later RSI<35 and VIX >= mean+2std signal in the last 20 trading days -> buy 2 contracts, or 1 if cash only covers one, exits <12m +150%, 12-15m +80%, 16-18m +30%",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,sigma2GapAssumption,"if a sigma2 day is not the first sigma2 signal in the last 60 trading days and also not the second-or-later sigma2 signal in the last 20 trading days, no sigma2 entry is taken",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,shortCallOverlay,"while a LEAPS is open and has >180 days left, sell a 30-calendar-day call 10% OTM, 1 short call per LEAPS contract, roll on expiry",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,shortCallIvAssumption,short OTM calls use the same realized-vol proxy as the LEAPS leg,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,forcedExit,force exit LEAPS at 180 days to expiry and buy back any still-open short call the same day,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,capital,start with $20000 and do not add capital later,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,sizingAssumption,"sigma1 requires enough cash for 1 contract; sigma2 repeat buys 2 if possible, otherwise 1 if cash covers one contract; otherwise the signal is skipped",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,strategy_assumptions,riskFreeRate,0.03,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,comparison_metrics,,,Strategy,2021-08-13,2026-08-12,1251,2.46617448,0.28246061,0.47467099,0.69674529,-0.55180443,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,comparison_metrics,,,Nasdaq Composite,2021-08-13,2026-08-12,1251,0.79374411,0.12405318,0.22857893,0.49820208,-0.3639528,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+summary,comparison_metrics,,,S&P 500,2021-08-13,2026-08-12,1251,0.73422113,0.11648694,0.17068362,0.55983877,-0.25425097,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+trade,trade_log,,,,,,,,,,,,2022-01-24,2023-05-22,sigma1_weekly_1lot,1,1,,,,343.6925,331.3911,325,6246.1472,4155.3429,4045.1326,0,47.8999,3997.2328,8152.5757,1906.4285,0.305217,483,28.3738,29.9,17.7464,7.2279,24.9744,"RSI(14) 28.3738 < 35; VIX 29.9 >= 24.9744; mean + 1*std <= VIX < mean + 2*std, buy 1 contract max once per week; short call overlay active",held 16-18 months and reached +30% profit,take_profit_30_16_to_18m
+trade,trade_log,,,,,,,,,,,,2022-02-23,2023-05-26,sigma1_weekly_1lot,1,1,,,,320.4619,341.952,301,6224.045,6450.6093,4237.9752,0,646.2218,3591.7534,10042.3627,3818.3177,0.613478,457,32.2349,31.02,17.8087,7.2426,25.0513,"RSI(14) 32.2349 < 35; VIX 31.02 >= 25.0513; mean + 1*std <= VIX < mean + 2*std, buy 1 contract max once per week; short call overlay active",held 16-18 months and reached +30% profit,take_profit_30_16_to_18m
+trade,trade_log,,,,,,,,,,,,2022-01-20,2023-06-02,sigma1_weekly_1lot,1,1,,,,351.8835,348.0863,333,6338.6658,4639.5403,4319.9691,0,690.9052,3629.0639,8268.6042,1929.9383,0.304471,498,31.0491,25.59,17.7381,7.2238,24.9619,"RSI(14) 31.0491 < 35; VIX 25.59 >= 24.9619; mean + 1*std <= VIX < mean + 2*std, buy 1 contract max once per week; short call overlay active",held 16-18 months and reached +30% profit,take_profit_30_16_to_18m
+trade,trade_log,,,,,,,,,,,,2024-08-06,2025-07-03,sigma1_weekly_1lot,1,1,,,,434.9684,553.5539,414,7310.7967,16493.3881,1541.5552,1744.3878,34.7129,-237.5454,16255.8427,8945.046,1.223539,331,33.4584,27.71,18.0948,7.0566,25.1514,"RSI(14) 33.4584 < 35; VIX 27.71 >= 25.1514; mean + 1*std <= VIX < mean + 2*std, buy 1 contract max once per week; short call overlay active",held <12 months and reached +120% profit,take_profit_120_before_12m
+trade,trade_log,,,,,,,,,,,,2024-08-05,2025-08-05,sigma2_first_60d_1lot,1,2,first_in_60d,1,1,430.8515,557.5845,410,7242.4305,16827.3578,1908.0395,2105.835,0,-197.7955,16629.5623,9387.1319,1.29613,365,30.2739,38.57,18.092,7.0557,32.2034,"RSI(14) 30.2739 < 35; VIX 38.57 >= 32.2034; first RSI<35 and VIX >= mean + 2*std signal in the last 60 trading days, buy 1 contract; short call overlay active",held 12-15 months and reached +80% profit,take_profit_80_12_to_15m
+trade,trade_log,,,,,,,,,,,,2025-03-10,2025-09-11,sigma1_weekly_1lot,1,1,,,,469.2366,581.2804,443,8687.7708,17389.7603,2048.132,0,311.8481,1736.2839,19126.0442,10438.2734,1.20149,185,28.5145,27.86,18.0751,6.9377,25.0129,"RSI(14) 28.5145 < 35; VIX 27.86 >= 25.0129; mean + 1*std <= VIX < mean + 2*std, buy 1 contract max once per week; short call overlay active",held <12 months and reached +120% profit,take_profit_120_before_12m

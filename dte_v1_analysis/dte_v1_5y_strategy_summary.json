@@ -1,0 +1,80 @@
+{
+  "config": {
+    "backtestStart": "2021-08-13",
+    "backtestEnd": "2026-08-12",
+    "compareStart": "2021-08-13",
+    "compareEnd": "2026-08-12"
+  },
+  "strategySummary": {
+    "symbol": "QQQ",
+    "backtestStart": "2021-08-13",
+    "backtestEnd": "2026-08-12",
+    "model": "Approximate Black-Scholes LEAPS without short call overlay using Yahoo adjusted close and trailing realized volatility",
+    "entries": 9,
+    "contractsEntered": 9,
+    "closedTrades": 9,
+    "openPositions": 0,
+    "wins": 8,
+    "losses": 1,
+    "winRate": 0.8888888888888888,
+    "initialCapital": 20000,
+    "skippedSignalsInsufficientCash": 13,
+    "endingEquity": 77404.68047386192,
+    "totalPnl": 57404.680473861925,
+    "multipleOnInitialCapital": 3.8702340236930963,
+    "cagr": 0.3110762711145396,
+    "maxDrawdown": -0.672357953944585,
+    "availableCash": 77404.68047386192,
+    "endingOpenLeapsValue": 0,
+    "endingShortCallLiability": 0,
+    "assumptions": {
+      "signal": "RSI(14) < 35 with tiered VIX entry filters",
+      "option": "~680 days to expiry, target delta 0.7",
+      "sigma1": "mean+1std <= VIX < mean+2std -> buy 1 contract max once per week, exits <12m +120%, 12-15m +60%, 16-18m +30%",
+      "sigma2First": "first RSI<35 and VIX >= mean+2std signal in the last 60 trading days -> buy 1 contract, exits <12m +150%, 12-15m +80%, 16-18m +30%",
+      "sigma2Repeat": "second or later RSI<35 and VIX >= mean+2std signal in the last 20 trading days -> buy 2 contracts, or 1 if cash only covers one, exits <12m +150%, 12-15m +80%, 16-18m +30%",
+      "sigma2GapAssumption": "if a sigma2 day is not the first sigma2 signal in the last 60 trading days and also not the second-or-later sigma2 signal in the last 20 trading days, no sigma2 entry is taken",
+      "shortCallOverlay": "disabled for comparison run",
+      "shortCallIvAssumption": "not applicable because short call overlay is disabled",
+      "forcedExit": "force exit LEAPS at 180 days to expiry",
+      "capital": "start with $20000 and do not add capital later",
+      "sizingAssumption": "sigma1 requires enough cash for 1 contract; sigma2 repeat buys 2 if possible, otherwise 1 if cash covers one contract; otherwise the signal is skipped",
+      "riskFreeRate": 0.03
+    }
+  },
+  "comparisonMetrics": [
+    {
+      "label": "Strategy",
+      "startDate": "2021-08-13",
+      "endDate": "2026-08-12",
+      "tradingDays": 1251,
+      "totalReturn": 2.8702340236999997,
+      "cagr": 0.3110762711150077,
+      "annualizedVolatility": 0.5728962337660375,
+      "sharpe": 0.7013757075434073,
+      "maxDrawdown": -0.6723579539445849
+    },
+    {
+      "label": "Nasdaq Composite",
+      "startDate": "2021-08-13",
+      "endDate": "2026-08-12",
+      "tradingDays": 1251,
+      "totalReturn": 0.7937441076775602,
+      "cagr": 0.12405318157089162,
+      "annualizedVolatility": 0.22857892549757525,
+      "sharpe": 0.49820207542121325,
+      "maxDrawdown": -0.3639527990912021
+    },
+    {
+      "label": "S&P 500",
+      "startDate": "2021-08-13",
+      "endDate": "2026-08-12",
+      "tradingDays": 1251,
+      "totalReturn": 0.7342211280214861,
+      "cagr": 0.11648694335445287,
+      "annualizedVolatility": 0.17068362280633514,
+      "sharpe": 0.5598387689603624,
+      "maxDrawdown": -0.25425096619230386
+    }
+  ]
+}
