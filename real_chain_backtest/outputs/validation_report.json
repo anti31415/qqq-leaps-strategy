@@ -1,0 +1,92 @@
+{
+  "overall_assessment": "ready_with_caveats",
+  "ask_bid_long_trade_rows": 18,
+  "ask_entry_matches_source_rows": 18,
+  "bid_exit_matches_source_rows": 18,
+  "delta_valid_rows": 18,
+  "dte_valid_rows": 18,
+  "short_event_quote_checks": [
+    {
+      "event": "sell_short_call",
+      "rows": 115,
+      "source_quote_match_rows": 115
+    },
+    {
+      "event": "buy_to_close_short",
+      "rows": 5,
+      "source_quote_match_rows": 5
+    }
+  ],
+  "accounting_reconciliation": [
+    {
+      "strategy": "dte_v1",
+      "scenario": "mid",
+      "ending_equity": 63626.0,
+      "initial_plus_closed_pnl": 63626.0,
+      "reconciled": true,
+      "open_position_count": 0
+    },
+    {
+      "strategy": "dte_v1",
+      "scenario": "spread_25pct_half",
+      "ending_equity": 62824.75,
+      "initial_plus_closed_pnl": 62824.75,
+      "reconciled": true,
+      "open_position_count": 0
+    },
+    {
+      "strategy": "dte_v1",
+      "scenario": "spread_50pct_half",
+      "ending_equity": 62023.5,
+      "initial_plus_closed_pnl": 62023.5,
+      "reconciled": true,
+      "open_position_count": 0
+    },
+    {
+      "strategy": "dte_v1",
+      "scenario": "ask_buy_bid_sell",
+      "ending_equity": 60421.0,
+      "initial_plus_closed_pnl": 60421.0,
+      "reconciled": true,
+      "open_position_count": 0
+    },
+    {
+      "strategy": "deployed",
+      "scenario": "mid",
+      "ending_equity": 104057.5,
+      "initial_plus_closed_pnl": 104057.5,
+      "reconciled": true,
+      "open_position_count": 0
+    },
+    {
+      "strategy": "deployed",
+      "scenario": "spread_25pct_half",
+      "ending_equity": 104193.625,
+      "initial_plus_closed_pnl": 104193.62500000001,
+      "reconciled": true,
+      "open_position_count": 0
+    },
+    {
+      "strategy": "deployed",
+      "scenario": "spread_50pct_half",
+      "ending_equity": 105334.5,
+      "initial_plus_closed_pnl": 105334.50000000001,
+      "reconciled": true,
+      "open_position_count": 0
+    },
+    {
+      "strategy": "deployed",
+      "scenario": "ask_buy_bid_sell",
+      "ending_equity": 66083.0,
+      "initial_plus_closed_pnl": 66083.0,
+      "reconciled": true,
+      "open_position_count": 0
+    }
+  ],
+  "all_accounting_reconciled": true,
+  "remaining_caveats": [
+    "Ten mid/25% deployed-strategy exit attempts and fewer in other scenarios were delayed because the exact-day active short-call quote was absent or non-tradable.",
+    "Intermediate fill scenarios can be non-monotonic because fills alter cash availability, quantities, and exit dates.",
+    "The source is EOD research data and does not prove intraday executable fills."
+  ]
+}

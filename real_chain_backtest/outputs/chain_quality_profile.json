@@ -1,0 +1,166 @@
+{
+  "source_file": "C:\\Users\\antiz\\OneDrive\\Desktop\\Codex\\量化研究\\qqq_real_chain_backtest\\data\\QQQ_options.parquet",
+  "file_size_bytes": 387476183,
+  "row_count": 15345882,
+  "row_group_count": 31,
+  "column_count": 21,
+  "columns": [
+    {
+      "name": "contract_id",
+      "type": "string"
+    },
+    {
+      "name": "symbol",
+      "type": "dictionary<values=string, indices=int8, ordered=0>"
+    },
+    {
+      "name": "expiration",
+      "type": "timestamp[ns]"
+    },
+    {
+      "name": "strike",
+      "type": "double"
+    },
+    {
+      "name": "type",
+      "type": "dictionary<values=string, indices=int8, ordered=0>"
+    },
+    {
+      "name": "last",
+      "type": "double"
+    },
+    {
+      "name": "mark",
+      "type": "double"
+    },
+    {
+      "name": "bid",
+      "type": "double"
+    },
+    {
+      "name": "bid_size",
+      "type": "int32"
+    },
+    {
+      "name": "ask",
+      "type": "double"
+    },
+    {
+      "name": "ask_size",
+      "type": "int32"
+    },
+    {
+      "name": "volume",
+      "type": "int32"
+    },
+    {
+      "name": "open_interest",
+      "type": "int32"
+    },
+    {
+      "name": "date",
+      "type": "timestamp[ns]"
+    },
+    {
+      "name": "implied_volatility",
+      "type": "float"
+    },
+    {
+      "name": "delta",
+      "type": "float"
+    },
+    {
+      "name": "gamma",
+      "type": "float"
+    },
+    {
+      "name": "theta",
+      "type": "float"
+    },
+    {
+      "name": "vega",
+      "type": "float"
+    },
+    {
+      "name": "rho",
+      "type": "float"
+    },
+    {
+      "name": "in_the_money",
+      "type": "bool"
+    }
+  ],
+  "date_min": "2011-03-23",
+  "date_max": "2025-12-15",
+  "expiration_max": "2028-01-21",
+  "max_dte": 1577,
+  "null_counts": {
+    "contract_id": 0,
+    "symbol": 0,
+    "expiration": 0,
+    "strike": 0,
+    "type": 0,
+    "last": 0,
+    "mark": 0,
+    "bid": 0,
+    "bid_size": 0,
+    "ask": 0,
+    "ask_size": 0,
+    "volume": 0,
+    "open_interest": 0,
+    "date": 0,
+    "implied_volatility": 17,
+    "delta": 0,
+    "gamma": 0,
+    "theta": 0,
+    "vega": 0,
+    "rho": 0,
+    "in_the_money": 0
+  },
+  "null_rates": {
+    "contract_id": 0.0,
+    "symbol": 0.0,
+    "expiration": 0.0,
+    "strike": 0.0,
+    "type": 0.0,
+    "last": 0.0,
+    "mark": 0.0,
+    "bid": 0.0,
+    "bid_size": 0.0,
+    "ask": 0.0,
+    "ask_size": 0.0,
+    "volume": 0.0,
+    "open_interest": 0.0,
+    "date": 0.0,
+    "implied_volatility": 1.1077890472505915e-06,
+    "delta": 0.0,
+    "gamma": 0.0,
+    "theta": 0.0,
+    "vega": 0.0,
+    "rho": 0.0,
+    "in_the_money": 0.0
+  },
+  "duplicate_date_contract_rows": 0,
+  "invalid_quote_rows_in_backtest_window": 25,
+  "five_year_window": {
+    "start": "2020-12-16",
+    "end": "2025-12-15"
+  },
+  "five_year_trade_dates": 1254,
+  "leaps_610_850_delta_065_075_rows": 18966,
+  "leaps_610_850_tradable_rows": 18956,
+  "leaps_610_850_tight_rows": 18772,
+  "leaps_610_850_tight_trade_dates": 1168,
+  "dte_v1_630_730_tight_rows": 8494,
+  "dte_v1_630_730_tight_trade_dates": 799,
+  "tight_candidate_delta_abs_error_median": 0.025030016899108887,
+  "tight_candidate_spread_pct_median": 0.050505050505050504,
+  "tight_candidate_spread_pct_p95": 0.07575757575757576,
+  "quality_assessment": "usable_with_caveats",
+  "material_caveats": [
+    "The public GitHub release ends on 2025-12-15, so it cannot cover the current trailing five years through 2026-08-12.",
+    "The upstream repository states the original options-data provenance is undocumented; treat this as research data, not an exchange-grade audit source.",
+    "The dataset is end-of-day, not intraday NBBO. Bid/ask scenarios therefore model EOD executions only.",
+    "Vendor Greeks and implied volatility contain extreme values outside plausible ranges; selection is restricted to call delta 0.65-0.75 and valid positive quotes."
+  ]
+}
