@@ -1,0 +1,76 @@
+{
+  "config": {
+    "backtestStart": "2012-01-01",
+    "backtestEnd": "2026-03-31",
+    "compareStart": "2016-03-01",
+    "compareEnd": "2026-03-31"
+  },
+  "strategySummary": {
+    "symbol": "QQQ",
+    "backtestStart": "2012-01-01",
+    "backtestEnd": "2026-03-31",
+    "model": "Approximate Black-Scholes LEAPS model using Yahoo adjusted close and trailing realized volatility",
+    "entries": 54,
+    "contractsEntered": 76,
+    "closedTrades": 52,
+    "openPositions": 2,
+    "wins": 48,
+    "losses": 4,
+    "winRate": 0.9230769230769231,
+    "initialCapital": 20000,
+    "skippedSignalsInsufficientCash": 9,
+    "endingEquity": 322952.77600599924,
+    "totalPnl": 302952.77600599924,
+    "multipleOnInitialCapital": 16.147638800299962,
+    "cagr": 0.2156515672640027,
+    "maxDrawdown": -0.5319910896063177,
+    "availableCash": 297733.7584078692,
+    "endingOpenValue": 25219.017598130016,
+    "assumptions": {
+      "signal": "RSI(14) < 35 with tiered VIX entry filters",
+      "option": "~730 days to expiry, target delta 0.7",
+      "sigma1": "expanding mean + 1 std <= VIX < expanding mean + 2 std -> buy 1 contract, max once per week, exits: <12m +100%, 12-15m +50%, 16-18m +30%",
+      "sigma2": "VIX >= expanding mean + 2 std -> buy 2 contracts, max once per day; if cash is insufficient for 2 but enough for 1, buy 1 instead; exits: <12m +150%, 12-15m +75%, 16-18m +30%",
+      "forcedExit": "force exit at 180 days to expiry",
+      "iv": "252d realized volatility * 1.2, clamped to 0.15-0.75",
+      "capital": "start with $20000 and do not add capital later",
+      "sizingAssumption": "sigma1 requires enough cash for 1 contract; sigma2 buys 2 if possible, otherwise 1 if cash covers one contract, otherwise the signal is skipped",
+      "riskFreeRate": 0.03
+    }
+  },
+  "comparisonMetrics": [
+    {
+      "label": "Strategy",
+      "startDate": "2016-03-01",
+      "endDate": "2026-03-31",
+      "tradingDays": 2536,
+      "totalReturn": 11.478571739633857,
+      "cagr": 0.2845122376763036,
+      "annualizedVolatility": 0.41334198824989093,
+      "sharpe": 0.7362359970107722,
+      "maxDrawdown": -0.5319910896063177
+    },
+    {
+      "label": "Nasdaq Composite",
+      "startDate": "2016-03-01",
+      "endDate": "2026-03-31",
+      "tradingDays": 2536,
+      "totalReturn": 3.6039385895964733,
+      "cagr": 0.16354090598392435,
+      "annualizedVolatility": 0.21900228250015033,
+      "sharpe": 0.6660380232057684,
+      "maxDrawdown": -0.36395279909120204
+    },
+    {
+      "label": "S&P 500",
+      "startDate": "2016-03-01",
+      "endDate": "2026-03-31",
+      "tradingDays": 2536,
+      "totalReturn": 2.299982359085716,
+      "cagr": 0.12573386996510494,
+      "annualizedVolatility": 0.17988835747980167,
+      "sharpe": 0.5833830702477343,
+      "maxDrawdown": -0.3392496000265328
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+entryDate,expiryDate,regime,vixStdMultiplier,quantity,entryUnderlying,entryRsi,entryIv,entryVix,entryVixMean,entryVixStd,strike,entryCost
+2026-03-26,2028-03-25,sigma1_weekly_1lot,1,1,573.79,34.7486,0.2682,27.44,18.1655,6.8497,537,11957.4946
+2026-03-30,2028-03-29,sigma1_weekly_1lot,1,1,558.28,28.8551,0.2684,30.61,18.1721,6.854,522,11665.2117

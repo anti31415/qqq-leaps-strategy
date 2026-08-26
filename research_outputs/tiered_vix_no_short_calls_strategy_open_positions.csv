@@ -1,0 +1,3 @@
+entryDate,expiryDate,regime,vixStdBand,sigma2SignalTag,sigma2Count60,sigma2Count20,quantity,entryUnderlying,entryRsi,entryIv,entryVix,entryVixMean,entryVixStd,vixThreshold,strike,entryCost,shortCallPremiumCollected,shortCallSettlements,shortCallCloseCost,shortCallNetCash,activeShortCallStrike,activeShortCallExpiry
+2026-03-26,2028-03-25,sigma1_weekly_1lot,1,,,,1,573.79,34.7486,0.2682,27.44,18.1655,6.8497,25.0152,537,11957.4946,0,0,0,0,,
+2026-03-30,2028-03-29,sigma1_weekly_1lot,1,,,,1,558.28,28.8551,0.2684,30.61,18.1721,6.854,25.0261,522,11665.2117,0,0,0,0,,

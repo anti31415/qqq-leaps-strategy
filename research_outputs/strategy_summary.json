@@ -1,0 +1,74 @@
+{
+  "config": {
+    "backtestStart": "2012-01-01",
+    "backtestEnd": "2026-03-31",
+    "compareStart": "2016-03-01",
+    "compareEnd": "2026-03-31"
+  },
+  "strategySummary": {
+    "symbol": "QQQ",
+    "backtestStart": "2012-01-01",
+    "backtestEnd": "2026-03-31",
+    "model": "Approximate Black-Scholes LEAPS model using Yahoo adjusted close and trailing realized volatility",
+    "entries": 25,
+    "closedTrades": 25,
+    "openPositions": 0,
+    "wins": 25,
+    "losses": 0,
+    "winRate": 1,
+    "initialCapital": 20000,
+    "skippedSignalsInsufficientCash": 0,
+    "endingEquity": 157550.2902024573,
+    "totalPnl": 137550.2902024573,
+    "multipleOnInitialCapital": 7.877514510122865,
+    "cagr": 0.15591638351274995,
+    "maxDrawdown": -0.33029175147726764,
+    "availableCash": 157550.2902024573,
+    "endingOpenValue": 0,
+    "assumptions": {
+      "signal": "RSI(14) < 35 and VIX >= expanding mean + 2*std",
+      "option": "~730 days to expiry, target delta 0.7",
+      "exits": "<12m at +150%; 12-15m at +75%; 16-18m at +30%; force exit at 180 days to expiry",
+      "buyFrequency": "max 1 contract every 1 trading days",
+      "iv": "252d realized volatility * 1.2, clamped to 0.15-0.75",
+      "vixFilter": "VIX close must be at or above its expanding historical mean plus 2 standard deviations",
+      "capital": "start with $20000 and do not add capital later",
+      "riskFreeRate": 0.03
+    }
+  },
+  "comparisonMetrics": [
+    {
+      "label": "Strategy",
+      "startDate": "2016-03-01",
+      "endDate": "2026-03-31",
+      "tradingDays": 2536,
+      "totalReturn": 6.462191929296772,
+      "cagr": 0.22063917856413173,
+      "annualizedVolatility": 0.25921752002044995,
+      "sharpe": 0.7820314266217798,
+      "maxDrawdown": -0.3302917514772676
+    },
+    {
+      "label": "Nasdaq Composite",
+      "startDate": "2016-03-01",
+      "endDate": "2026-03-31",
+      "tradingDays": 2536,
+      "totalReturn": 3.6039385895964733,
+      "cagr": 0.16354090598392435,
+      "annualizedVolatility": 0.21900228250015033,
+      "sharpe": 0.6660380232057684,
+      "maxDrawdown": -0.36395279909120204
+    },
+    {
+      "label": "S&P 500",
+      "startDate": "2016-03-01",
+      "endDate": "2026-03-31",
+      "tradingDays": 2536,
+      "totalReturn": 2.299982359085716,
+      "cagr": 0.12573386996510494,
+      "annualizedVolatility": 0.17988835747980167,
+      "sharpe": 0.5833830702477343,
+      "maxDrawdown": -0.3392496000265328
+    }
+  ]
+}

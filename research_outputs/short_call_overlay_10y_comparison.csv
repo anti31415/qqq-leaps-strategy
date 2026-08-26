@@ -1,0 +1,4 @@
+﻿"variant","window","totalReturnPct","cagrPct","sharpe","annualizedVolPct","maxDrawdownPct"
+"With short call overlay","2016-03-01 to 2026-03-31","1358.20","30.45","0.9680","28.58","-33.99"
+"Without short call overlay","2016-03-01 to 2026-03-31","1111.06","28.07","0.7566","38.24","-45.42"
+"Delta (with - without)","2016-03-01 to 2026-03-31","247.14","2.38","0.2114","-9.65","11.43"
