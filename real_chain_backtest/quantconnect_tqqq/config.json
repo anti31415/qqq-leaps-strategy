@@ -1,0 +1,6 @@
+{
+  "description": "QQQ daily signal with TQQQ cash-secured puts and covered calls; migrated from the local deployed strategy.",
+  "parameters": {},
+  "cloud-id": -1,
+  "organization-id": ""
+}
