@@ -1,35 +1,39 @@
-# Tianbro QQQ LEAPS Strategy
+# QQQ LEAPS Strategy Research
 
-本目录整理了“天哥 QQQ LEAPS 期权复利引擎”视频对应的本地化研究结果，包括字幕清洗、策略总结、近似回测和近十年对比分析。
+An open research project for a rules-based QQQ LEAPS strategy. It contains a paper-trading scaffold, approximate Black–Scholes backtests, and a reproducible EOD option-chain study.
 
-## 文件说明
+## Contents
 
-- `01_清洗字幕.md`：清洗后的字幕稿
-- `02_策略总结.md`：结构化策略说明
-- `03_回测结果.md`：基础版 `QQQ LEAPS` 近似回测结果
-- `04_近十年收益_夏普_波动率对比.md`：`2016-03-01` 到 `2026-03-31` 的策略、纳指、标普对比
-- `backtest_tianbro_qqq_leaps.js`：回测脚本
-- `outputs/strategy_summary.json`：总结果摘要
-- `outputs/strategy_trades.csv`：逐笔交易记录
-- `outputs/strategy_equity_curve.csv`：策略日度权益曲线
-- `outputs/comparison_curve.csv`：策略与基准的标准化净值曲线
-- `outputs/comparison_metrics.csv`：收益、夏普、波动率等指标表
+- `strategy_rules.md` — strategy thesis and explicit assumptions.
+- `backtest_results.md` — approximate backtest methodology and results.
+- `performance_comparison.md` — benchmark comparison.
+- `trade_log_notes.md` — trade-level research notes.
+- `autotrade/` — Alpaca paper-trading scaffold; preview mode is the default.
+- `research_outputs/` — generated curves, summaries, and trade records.
+- `dte_v1_analysis/` — DTE V1 versus deployed-version comparisons.
+- `real_chain_backtest/` — EOD option-chain backtest and validation workflow.
 
-## 回测说明
+## Reproducibility
 
-这不是逐笔真实期权链复盘，而是按视频规则加上 `VIX` 极端过滤做的近似建模：
+The approximate model uses QQQ daily data, VIX filters, Black–Scholes pricing, a fixed initial balance, and explicit take-profit rules. The real-chain study covers `2020-12-16` through `2025-12-15` and uses EOD bid/ask scenarios. It is not intraday NBBO data and does not guarantee executable fills.
 
-- 标的价格来自 `Yahoo Finance`
-- `VIX` 过滤条件为：`VIX >= 历史扩展均值 + 2σ`
-- 初始本金固定为 `$20,000`，中间不追加资金
-- 止盈条件为：`<12m +150%`、`12-15m +75%`、`16-18m +30%`
-- 波动率使用历史实现波动率近似
-- 期权价格使用 `Black-Scholes`
-- `Covered Call` 进阶增强未纳入主回测
+The original option-chain file is intentionally excluded because it is about 387 MB. Acquisition instructions and its SHA-256 checksum are documented in `real_chain_backtest/README.md`.
 
-## 重新运行
+## Quick start
 
 ```powershell
-& 'C:\Users\antiz\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' `
-  'C:\Users\antiz\OneDrive\Desktop\Codex\量化研究\tianbro_qqq_leaps_strategy\backtest_tianbro_qqq_leaps.js'
+node backtest_tianbro_qqq_leaps.js
+python -m pip install -r real_chain_backtest/requirements.txt
+python real_chain_backtest/profile_chain.py
+python real_chain_backtest/backtest_real_chain.py
+python real_chain_backtest/validate_outputs.py
 ```
+
+## Contribution
+
+Please include the data date, parameters, execution assumptions, command used, and validation output with every research change. See `CONTRIBUTING.md`.
+
+## Risk notice
+
+This repository is for education and research only. Options can expire worthless and may cause substantial losses. Nothing here is investment, tax, or trading advice.
+
